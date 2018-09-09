@@ -1,0 +1,19 @@
+{
+  "name": "jackpot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aman123006/jackpot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aman123006/jackpot/issues"
+  },
+  "homepage": "https://github.com/aman123006/jackpot#readme"
+}
