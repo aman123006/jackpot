@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/aman123006/jackpot/issues"
   },
-  "homepage": "https://github.com/aman123006/jackpot#readme"
+  "homepage": "https://github.com/aman123006/jackpot#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.13",
+    "save": "^2.3.2"
+  }
 }
