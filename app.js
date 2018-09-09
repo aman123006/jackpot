@@ -37,6 +37,8 @@ let users = require('./routes/users');
 //app.use('/articles', articles);
 app.use('/users', users);
 
+let verification = require('./routes/verification');
+app.use('/verification', verification);
 
 app.listen(config.PORT, function(){
   console.log('Server started on port 3000...');

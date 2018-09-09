@@ -4,6 +4,7 @@ let config = {
     EMAIL_PASS:process.env.EP,
     DB_URL:process.env.DB_URL,
    PORT:process.env.PORT,
+   HOST:process.env.HOST,
 }
 
 module.exports = config;
