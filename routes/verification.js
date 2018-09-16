@@ -67,7 +67,92 @@ res.send("SSS");
 
 
 //Verify Email Route
+router.get('/email/:uniquecode', (req, res)=>{
+
+let uniquecode = req.params.uniquecode;
+
+let id = uniquecode.substring(6);
+let otp = uniquecode.substring(0,6);
+
+User.findById(id,(err,user)=>
+{ 
+   if(err){
+      console.log(err);
+      return;
+    } else {
+  let username = user.username;
+  console.log(username);
+  UserVerification.findOne({username:username},(err,uservarification)=>
+  {console.log(uservarification);
+   
+    if(err){
+      console.log(err);
+      return;
+     } else{
+       let now = new Date();
+       let otpgenrated = new Date(uservarification.emailotpgenerated);
+       let timeSpan = now - otpGenrated;
+       
+       const tenMinutes = 10*60*1000;
+
+          if(timeSpan>tenMinutes)
+            {
+              res.send({error:"otp Expired"});
+              return;
+            }
+
+             if(uservarification.emailotp==otp)
+        { console.log('verified');
+           updatedUserVarification = {
+           emailverified:true,
+         }
+          let query = {username:username};
+         UserVerification.updateOne(query,updatedUserVarification,(err)=>{
+           
+     if(err){
+      console.log(err);
+      res.send({error:err});
+      return;
+    } else {
+
+      console.log("userVerified");
+      res.send({Success:true});
 
 
+    }
+
+         });
+        }
+        else{
+          res.send({error:"some issue"})
+        }
+
+    }
+  }
+
+);
+}
+
+});
+});
+
+router.get('/isverified/:username',(req,res)=>
+{
+  let username = req.params.username;
+  UserVerification.findOne({username:username}, (err,User)=>
+{
+  if(err)
+    {
+      console.log(err);
+    res.send({error:err})
+    }
+  else{
+  if(user.emailverified)
+   { req.send({verified:true});}
+  else
+    { req.send({verified:false});}
+  }
+});
+});
 
 module.exports = router;

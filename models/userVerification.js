@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 UserVerificationSchema = mongoose.Schema({
   username:{
     type: String,
-    required: true
+    required: true,
+   
   },
   emailotp:{
     type: Number,
