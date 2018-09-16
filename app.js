@@ -2,10 +2,10 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv').config();
+var config = require('./config/config');
 
 
-mongoose.connect(process.env.DB_URL);
+mongoose.connect(config.DB_URL);
 let db = mongoose.connection;
 
 // Check connection
@@ -37,7 +37,9 @@ let users = require('./routes/users');
 //app.use('/articles', articles);
 app.use('/users', users);
 
+let verification = require('./routes/verification');
+app.use('/verification', verification);
 
-app.listen(process.env.PORT, function(){
+app.listen(config.PORT, function(){
   console.log('Server started on port 3000...');
 });
